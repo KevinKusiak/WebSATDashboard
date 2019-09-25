@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SAT,dashboard,project" />
+    <meta name="description" content="SAT Dashboard AP and Final Project" />
+
+    <title>SAT Dashboard - Maps</title>
+
+    <!--These are the labeled libraries-->
+    <!-- jQuery Library-->
+    <script type="text/javascript" src="lib/js/jquery-1.12.3.min.js"></script>
+
+    <!--Bootstrap Library-->
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Google maps API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgaiWihFnwr9GJDbEJlIrHxZbQnqTJAMg&libraries=visualization,geometry"></script>
+    <script src="lib/js/markerclusterer.js"></script>
+
+    <!--Sources to Javascript Files-->
+    <script src="data/sat_scores.js"></script>
+    <script src="script/favorites.js"></script>
+    <script src="script/maps.js"></script>
+
+</head>
+<body data-offset="60" data-target=".navbar" data-spy="scroll">
+
+    <!--Menu Navigation Bar Setup-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">SAT Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="maps.html">Maps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html" id="favMenu">My School</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data.html">Project Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <br />
+
+        <!--Jumbotron (basically a big heading) for a simple one line description of my maps page-->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">SAT Total Score Locations</h1>
+                <p class="lead">
+                    Using Google Maps API is fun!
+                </p>
+            </div>
+        </div>
+
+        <!--A form for the user to select what score ranges they want to see on the map-->
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="rangeList"><b>Select SAT Score Range</b></label>
+                    <select id="rangeList" class="form-control" onchange="refreshScores()">
+                        <option value="low">Below 800</option>
+                        <option value="medium">800-1000</option>
+                        <option value="high">Above 1000</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <br /><br />
+
+        <!--This one and only row consists of two empty divs, which are then filled with the maps.js to show the cluster and heat maps for the selected score range-->
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header">
+                        Map of Total SAT Scores by Score Ranges
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Marker Cluster Map
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="mapCluster" style="width: 100%; height:400px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Heat Map
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="flotchart-container" style="padding-top:20px;">
+                                            <div id="mapHeat" style="width: 100%; height:400px;"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br /><br />
+    <!--Source and name tag-->
+    <footer class="footer alert-dark" style="padding:10px">
+        <div class="container text-center" style="font-weight:bold">
+            <p>&copy; Kevin Kusiak</p>
+            <p>AP Computer Science Principles, Mr. Richard Cortez</p>
+        </div>
+    </footer>
+</body>
+</html>

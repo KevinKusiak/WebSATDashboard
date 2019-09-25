@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SAT,dashboard,project" />
+    <meta name="description" content="SAT Dashboard AP and Final Project" />
+
+    <title>SAT Dashboard - Project Data</title>
+
+    <!--These are the labeled libraries-->
+    <!-- jQuery API-->
+    <script type="text/javascript" src="lib/js/jquery-1.12.3.min.js"></script>
+
+    <!--Bootstrap API-->
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--jQuery Data Tables API-->
+    <script type="text/javascript" src="lib/js/jquery.dataTables.min.js"></script>
+    <link href="lib/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="lib/js/dataTables.responsive.min.js"></script>
+    <link href="lib/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Sources to Javascript Files-->
+    <script src="script/data.js"></script>
+    <script src="script/favorites.js"></script>
+    <script src="data/sat_scores.js"></script>
+</head>
+<body data-offset="60" data-target=".navbar" data-spy="scroll">
+
+    <!--Menu Navigation Bar Setup-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">SAT Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="maps.html">Maps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html" id="favMenu">My School</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data.html">Project Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Jumbotron (basically a big heading) for how I got my data page-->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Project Data</h1>
+            <br />
+            <p class="lead">
+                I initially tried to find real SAT scores on the District 211 website, but I was unable to find the actual SAT scores. After researching the SAT score structure on the web, I manually created the SAT score dataset.
+
+                <hr class="my-4">
+                <strong>Creating SAT Scores</strong>
+                <ol>
+                    <li>I created a spreadsheet for SAT section and individual tests in Excel first. I also added columns for school names, years, and geolocations for possible mapping. The table below reflects what the Excel spreadsheet data looked like.</li>
+                    <li>Next I used randbetween() function in Excel to generate random English and Math section scores as well as the years. The subtotal and total columns had formulas and updated on their own.</li>
+                    <li>I also looked up the addresses of the 5 schools in Google maps and recorded their geographical locations.</li>
+                    <li>Then I used an online CSV to JSON converter to convert my Excel data into an array of JSON objects. <a href="http://www.convertcsv.com/csv-to-json.htm" target="_blank">http://www.convertcsv.com/csv-to-json.htm</a></li>
+                    <li>The output file was of type .json. After downloading the file, I changed its format to .js and assigned the array of JSON objects to a JavaScript variable.</li>
+                    <li>Then I referenced this data file on every page that displays the data.</li>
+                    <li>This data file contains 250 rows of SAT scores for 5 District 211 schools for years 2014-2017.</li>
+
+                </ol>
+            </p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+
+        <!--Link for the user to go to where they can physically get all the raw data as can be seen in the folder in the project data then the sat_scores.js file-->
+        <div class="alert alert-primary" role="alert">
+            You can download the raw project data here -> <a href="data/sat_scores.js" class="alert-link" target="_blank">JSON Project Data</a>
+        </div>
+
+
+        <!--Empty div which then the data.js is used to fill in the raw data into a javascript data table-->
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Project Data
+                    </div>
+                    <div class="card-body">
+                        <div id="project_data" style="padding:20px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br /><br />
+
+    <!--Source and name tag-->
+    <footer class="footer alert-dark" style="padding:10px">
+        <div class="container text-center" style="font-weight:bold">
+            <p>Concept, Design, and Programming by Kevin Kusiak</p>
+            <p>AP Computer Science Principles, Mr. Richard Cortez</p>
+        </div>
+    </footer>
+</body>
+</html>

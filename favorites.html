@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SAT,dashboard,project" />
+    <meta name="description" content="SAT Dashboard AP and Final Project" />
+
+    <title>SAT Dashboard - My School</title>
+
+    <!--These are the labeled libraries-->
+    <!-- jQuery API-->
+    <script type="text/javascript" src="lib/js/jquery-1.12.3.min.js"></script>
+
+    <!--Bootstrap API-->
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Sources to Javascript Files-->
+    <script src="script/favorites.js"></script>
+
+</head>
+<body data-offset="60" data-target=".navbar" data-spy="scroll">
+
+    <!--Overall NavBar-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">SAT Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="maps.html">Maps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html" id="favMenu">My School</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data.html">Project Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <br />
+
+        <!--Jumbotron for Describing How To Select Your Favorite School -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Select your Favorite School</h1>
+                <br />
+                <p class="lead" id="about">
+                    This page allows for selecting a favorite school. When a favorite school is selected, the home page will by default calculate and display all the statistics and data views for that school.
+                    Otherwise, the same will happen for all the schools.
+                </p>
+                <hr class="my-4">
+                <b>To select your favorite school:</b>
+                <ol>
+                    <li>Select any of the 5 district 211 schools from the list</li>
+                    <li>Click the Save Favorite button to store the school name in the local browser storage.</li>
+                    <li>The application menu will show the school name next to My School</li>
+                    <li>All data views on the home page will by default execute for the favorite school</li>
+                    <li style="color:red">Please note that this feature requires a web server when using an Internet Explorer. Please use Chrome or Firefox instead.</li>
+                </ol>
+
+                <b>To remove your favorite school:</b>
+                <ol>
+                    <li>Click the Delete Favorite button to remove the school name from the local browser storage.</li>
+                    <li>The application menu will no longer show the school name next to My School</li>
+                    <li>All data views on the home page will by default execute for all schools now.</li>
+                </ol>
+
+
+            </div>
+        </div>
+
+
+        <!--Paragraph display on the favorites page so that the user knows what favorite school he picked-->
+        <div class="row align-items-center justify-content-center">
+            <p id="title" style="font-weight:bold">
+                Favorite School:
+            </p>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+            <p id="presentFavorites" style="background-color:yellow;font-weight:bold;padding:20px"> </p>
+        </div>
+
+
+        <!--Form for which school the user wants to be their favorite. This includes the buttons to set and delete their favorites-->
+        <div class="row">
+            <div class="col-lg" style="padding:30px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Favorite School Setup
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center justify-content-center">
+                            <select id="schoolList">
+                                <option value="CHS" selected>Conant High School</option>
+                                <option value="SHS">Schaumburg High School</option>
+                                <option value="PHS">Palatine High School</option>
+                                <option value="HEHS">Hoffman Estates High School</option>
+                                <option value="FHS">Fremd High School</option>
+                            </select>
+                            &nbsp; &nbsp;
+                            <input type="button" value="Save Favorite" onclick="approveFavorites()" class="btn-success" />
+                            &nbsp;&nbsp;
+                            <input type="button" value="Delete Favorite" onclick="deleteFavorites()" class="btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <!--Source and name tag-->
+    <footer class="footer alert-dark" style="padding:10px">
+        <div class="container text-center" style="font-weight:bold">
+            <p>Concept, Design, and Programming by Kevin Kusiak</p>
+            <p>AP Computer Science Principles, Mr. Richard Cortez</p>
+        </div>
+    </footer>
+
+</body>
+</html>

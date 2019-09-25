@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SAT,dashboard,project" />
+    <meta name="description" content="SAT Dashboard AP and Final Project" />
+
+    <title>SAT Dashboard</title>
+
+    <!--These are the labeled libraries-->
+
+    <!-- jQuery API-->
+    <script type="text/javascript" src="lib/js/jquery-1.12.3.min.js"></script>
+
+    <!--Bootstrap API -->
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--jQuery Data Tables API-->
+    <script type="text/javascript" src="lib/js/jquery.dataTables.min.js"></script>
+    <link href="lib/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="lib/js/dataTables.responsive.min.js"></script>
+    <link href="lib/css/responsive.dataTables.min.css" rel="stylesheet" type="texst/css" />
+
+    <!--Flot Charting API -->
+    <script type="text/javascript" src="lib/js/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="lib/js/jquery.flot.resize.js"></script>
+       <script type="text/javascript" src="lib/js/jquery.flot.orderBars.js"></script>
+
+    <!--Math API-->
+    <script type="text/javascript" src="lib/js/math.min.js"></script>
+
+    <!--Sources to Javascript Files-->
+    <script src="script/index.js"></script>
+    <script src="script/favorites.js"></script>
+    <script src="data/sat_scores.js"></script>
+
+</head>
+<body data-offset="60" data-target=".navbar" data-spy="scroll">
+
+    <!--Menu Navigation Bar Setup-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">SAT Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>   
+                <li class="nav-item">
+                    <a class="nav-link" href="maps.html">Maps</a>
+                </li>              
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html" id="favMenu">My School</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data.html">Project Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+     
+    <!--Main Jumbotron for Basic Explanation of the SAT Dashboard-->
+    <div class="container-fluid">
+        <br />
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Welcome to SAT Dashboard!</h1>
+                <br />
+                <p class="lead">
+                    The SAT Dashboard is an interactive web application that provides various data visualizations for randomly generated SAT scores for five District 211 high schools.
+                    <br />
+                    <div class="alert alert-primary" role="alert">
+                        For more information, please see the About page ->  <a href="about.html" class="alert-link">About SAT Dashboard</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+        <!--Form For What School The User Wants to See The Stats Of-->
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="schoolList"><b>Select Schools</b></label>
+                    <select id="schoolList" class="form-control" onchange="refreshScores()">
+                        <option value="" selected>All Schools</option>
+                        <option value="CHS">Conant High School</option>
+                        <option value="SHS">Schaumburg High School</option>
+                        <option value="PHS">Palatine High School</option>
+                        <option value="HEHS">Hoffman Estates High School</option>
+                        <option value="FHS">Fremd High School</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="yearList"><b>Select Years</b></label>
+                    <select id="yearList" class="form-control" onchange="refreshScores()">
+                        <option value="" selected>All Years</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+
+            </div>
+        </form>
+
+        <br /><br />
+
+        <!--Empty Div for Cumulative and Generic School SAT Statistics -->
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Total SAT Score Statistics
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        Mean
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="mean"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        Median
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="median"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        Mode
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="mode"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        STD Deviation
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="deviation"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        Minimum
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="min"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        Maximum
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="max"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Empty Div For Data Table and Chart for Averages-->
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Average SAT Score Analysis
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT Scores
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="satMeanGrid"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT Scores by Year
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="flotchart-container" style="padding-top:20px;">
+                                            <div id="satMeanChart" class="flotchart-placeholder" style="width: 100%; height:350px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Empty Div For Data Table and Chart for Medians-->
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Median SAT Score Analysis
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Median SAT Scores
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="satMedianGrid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Median SAT Scores by Year
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="flotchart-container" style="padding-top:20px;">
+                                            <div id="satMedianChart" class="flotchart-placeholder" style="width: 100%; height:350px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+
+        <!--Empty Div For Data Table and Chart for Average for English Score-->
+
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Average SAT Score Analysis for English Score
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT English Scores
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="satMeanGridEng"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT English Scores by Year
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="flotchart-container" style="padding-top:20px;">
+                                            <div id="satMeanChartEng" class="flotchart-placeholder" style="width: 100%; height:350px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Empty Div For Data Table and Chart for Average Math Score-->
+
+        <div class="row">
+            <div class="col-lg" style="padding-bottom:20px">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        Average SAT Score Analysis for Math Score
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT Math Scores
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="satMeanGridMath"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-bottom:20px">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        Average SAT Math Scores by Year
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="flotchart-container" style="padding-top:20px;">
+                                            <div id="satMeanChartMath" class="flotchart-placeholder" style="width: 100%; height:350px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--Source and name tag-->
+    <footer class="footer alert-dark" style="padding:10px">
+        <div class="container text-center" style="font-weight:bold">
+            <p>Concept, Design, and Programming by Kevin Kusiak</p>
+            <p>AP Computer Science Principles, Mr. Richard Cortez</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

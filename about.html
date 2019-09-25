@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SAT,dashboard,project" />
+    <meta name="description" content="SAT Dashboard AP and Final Project" />
+
+    <title>SAT Dashboard - About</title>
+
+    <!--These are the labeled libraries-->
+    <!-- jQuery API-->
+    <script type="text/javascript" src="lib/js/jquery-1.12.3.min.js"></script>
+
+    <!--Bootstrap API-->
+    <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Sources to Javascript Files-->
+    <script src="script/favorites.js"></script>
+
+    <style>
+        #about {
+            color: blue;
+        }
+    </style>
+</head>
+<body data-offset="60" data-target=".navbar" data-spy="scroll">
+
+    <!--Menu Navigation Bar Setup-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">SAT Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="maps.html">Maps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html" id="favMenu">My School</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data.html">Project Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Jumbotron (basically a big header) for a basic description of my project, its uses, and its compatibility with other devices/platforms-->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">About SAT Dashboard</h1>
+            <br />
+            <p class="lead">
+                I got an idea for this type of an application when trying to research the SAT scores for my high school before taking a PSAT exam this year.
+                When I was unable to find this information, I thought that it would be useful for the students to have a website where they could go and not only find such information, but also see various statistics for the scores.
+
+                <hr class="my-4">
+                <strong>Facts about SAT Dashboard</strong>
+                <ol>
+                    <li>Completely programmed with client-side languages and frameworks such as Javascript, HTML 5, CSS, browser local storage, and JSON data.</li>
+                    <li>It can be run locally without a need for a web server. For the support of local storage API, you need to use Chrome or Firefox.</li>
+                    <li>It utilizes the latest versions of open-source APIs such as Bootstrap, jQuery, jQuery Datatables, and FLOT charting.</li>
+                    <li>It features a responsive design and it can be viewed on any device such a smartphone or a tablet.</li>
+                </ol>
+            </p>
+        </div>
+    </div>
+
+    <!--In this div, all my sources that I used for my program are displayed for the user to see-->
+    <div class="container-fluid">
+
+        <h2>List of Online References and JavaScript APIs I Used in the Project</h2>
+
+        <br />
+
+        <div class="alert alert-warning" role="alert">
+            Understanding the New SAT Score Report <a href="https://www.manyagroup.com/blog/understanding-the-new-sat-score-report/" class="alert-link" target="_blank"> https://www.manyagroup.com/blog/understanding-the-new-sat-score-report/</a>
+            <br /><br />
+            <pre>
+            SAT Scores Components
+
+            1. Evidence-Based Reading and Writing
+            2. Math
+
+            The total score is the sum of the two section scores; its range is 400–1600. Students receive scores in the range of 200–800 for each of two sections.
+
+            Test Scores
+            22 | 10–40 Reading
+            27 | 10–40 Writing and Language
+            26.0 | 10–40 Math
+
+            In Summary:
+
+            Total Score = (Evidence-based Reading and Writing Section Score) + (Math Section Score)
+
+            Math Section Score = (Math Test Score) x 20
+
+            Evidence-based Reading and Writing Section Score = (Reading Test Score + Writing Test Score) x 10
+        </pre>
+        </div>
+
+        <div class="alert alert-dark" role="alert">
+            Working with JSON <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            CSV to JSON <a href="http://www.convertcsv.com/csv-to-json.htm" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-dark" role="alert">
+            An extensive math library for JavaScript and Node.js <a href="http://mathjs.org/index.html" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            Web Storage API <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-dark" role="alert">
+            Bootstrap, an open source toolkit for developing with HTML, CSS, and JS <a href="https://getbootstrap.com/" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            jQuery <a href="https://jquery.com/" class="alert-link" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON</a>
+        </div>
+
+        <div class="alert alert-dark" role="alert">
+            FLOT Charting and examples <a href="http://www.jqueryflottutorial.com/how-to-make-jquery-flot-line-chart.html" class="alert-link" target="_blank">http://www.jqueryflottutorial.com/how-to-make-jquery-flot-line-chart.html</a>
+
+            <br /> <br />
+
+            I used the showTooltip() function example below and modified it for my own application to display a chart data point values on mouse over.
+
+            <br /> <br />
+
+            <!--Pre-formatted text tag with source code from which I made the showTooltip() function-->
+            <pre>
+                               $.fn.UseTooltip = function () {
+            $(this).bind(&quot;plothover&quot;, function (event, pos, item) {
+                if (item) {
+                    if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+                        previousPoint = item.dataIndex;
+                        previousLabel = item.series.label;
+                        $(&quot;#tooltip&quot;).remove();
+                        var x = item.datapoint[0];
+                        var y = item.datapoint[1];
+                        var color = item.series.color;
+                        var month = new Date(x).getMonth();
+                       
+                        if (item.seriesIndex == 0) {
+                            showTooltip(item.pageX,
+                            item.pageY,
+                            color,
+                            &quot;&lt;strong&gt;&quot; + item.series.label + &quot;&lt;/strong&gt;&lt;br&gt;&quot; + monthNames[month] + &quot; : &lt;strong&gt;&quot; + y + &quot;&lt;/strong&gt;(USD)&quot;);
+                        } else {
+                            showTooltip(item.pageX,
+                            item.pageY,
+                            color,
+                            &quot;&lt;strong&gt;&quot; + item.series.label + &quot;&lt;/strong&gt;&lt;br&gt;&quot; + monthNames[month] + &quot; : &lt;strong&gt;&quot; + y + &quot;&lt;/strong&gt;(%)&quot;);
+                        }
+                    }
+                } else {
+                    $(&quot;#tooltip&quot;).remove();
+                    previousPoint = null;
+                }
+            });
+        };
+        function showTooltip(x, y, color, contents) {
+            $('&lt;div id=&quot;tooltip&quot;&gt;' + contents + '&lt;/div&gt;').css({
+                position: 'absolute',
+                display: 'none',
+                top: y - 40,
+                left: x - 120,
+                border: '2px solid ' + color,
+                padding: '3px',
+                'font-size': '9px',
+                'border-radius': '5px',
+                'background-color': '#fff',
+                'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+                opacity: 0.9
+            }).appendTo(&quot;body&quot;).fadeIn(200);
+        }
+
+            </pre>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            Google Maps API <a href="https://developers.google.com/maps/documentation/javascript/tutorial" class="alert-link" target="_blank">https://developers.google.com/maps/documentation/javascript/tutorial</a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <!--Source and name tag-->
+    <footer class="footer alert-dark" style="padding:10px">
+        <div class="container text-center" style="font-weight:bold">
+            <p>Concept, Design, and Programming by Kevin Kusiak</p>
+            <p>AP Computer Science Principles, Mr. Richard Cortez</p>
+        </div>
+    </footer>
+</body>
+</html>
